@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Detalles Cliente - Admin PetEats</title>
+    <link rel="stylesheet" href="../../css/style.css" />
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <main class="admin-content">
+        <section class="content">
+            <h2>Cliente #<span id="clienteId"></span></h2>
+
+            <p><strong>Nombre:</strong> <span id="clienteNombre"></span></p>
+            <p><strong>Teléfono:</strong> <span id="clienteTelefono"></span></p>
+            <p><strong>Estado:</strong> <span id="clienteEstado"></span></p>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="../../js/clientes.js"></script>
+    <script>
+        
+        const clienteId = new URLSearchParams(window.location.search).get('id');
+        document.getElementById('clienteId').innerText = clienteId;
+
+        cargarClientePorId(clienteId);
+    </script>
+    <script src="../../js/layout.js"></script>
+
+</body>
+</html>

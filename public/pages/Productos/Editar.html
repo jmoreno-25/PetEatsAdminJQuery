@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Editar Producto - Admin PetEats</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="../../css/style.css" />
+</head>
+<body style="min-height: 100vh; display: flex; flex-direction: column;">
+
+    <div id="header-placeholder"></div>
+
+    <main class="admin-content" style="flex: 1;">
+        <section class="content">
+            <h2>Editar Producto #<span id="productoId"></span></h2>
+
+            <form id="editarProductoForm">
+                <label>Nombre</label>
+                <input type="text" name="PRD_NOMBRE" required>
+
+                <label>Precio</label>
+                <input type="number" step="0.01" name="PRD_PRECIO" required>
+
+                <label>Categoría</label>
+                <select name="CAT_ID" id="categoriasSelect" required></select>
+
+                <label>Animal</label>
+                <select name="T_ANIMAL_ID" id="animalesSelect" required></select>
+
+                <label>Descripción</label>
+                <textarea name="PRD_DESCRIPCION" required></textarea>
+
+                <label>Stock</label>
+                <input type="number" name="PRD_STOCK" required>
+
+                <label>Imagen (URL)</label>
+                <input type="url" name="PRD_IMAGEN" required>
+
+                <label>Estado</label>
+                <select name="PRD_ESTADO" required>
+                    <option value="ACT">Activo</option>
+                    <option value="INA">Inactivo</option>
+                </select>
+
+                <button type="submit" class="btn-crear">Actualizar</button>
+            </form>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="../../js/productos.js"></script>
+    <script>
+    const id = new URLSearchParams(window.location.search).get('id');
+    document.getElementById('productoId').innerText = id;
+
+    cargarCategoriasYAnimales().then(() => {
+        cargarProductoPorId(id);
+    });
+
+    document.getElementById('editarProductoForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const producto = {
+            PRD_NOMBRE: form.querySelector('[name="PRD_NOMBRE"]').value,
+            PRD_PRECIO: parseFloat(form.querySelector('[name="PRD_PRECIO"]').value),
+            CAT_ID: parseInt(form.querySelector('[name="CAT_ID"]').value),
+            T_ANIMAL_ID: parseInt(form.querySelector('[name="T_ANIMAL_ID"]').value),
+            PRD_DESCRIPCION: form.querySelector('[name="PRD_DESCRIPCION"]').value,
+            PRD_STOCK: parseInt(form.querySelector('[name="PRD_STOCK"]').value),
+            PRD_IMAGEN: form.querySelector('[name="PRD_IMAGEN"]').value,
+            PRD_ESTADO: form.querySelector('[name="PRD_ESTADO"]').value
+        };
+
+        actualizarProducto(id, producto);
+    });
+</script>
+
+    <script src="../../js/layout.js"></script>
+
+</body>
+</html>

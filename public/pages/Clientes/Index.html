@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Clientes - Admin PetEats</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="../../css/style.css" />
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <main class="admin-content">
+        <section class="content">
+            <h2>Clientes</h2>
+
+            <div id="mensaje-exito" class="alerta-exito" style="display:none;"></div>
+
+            <a class="btn-crear" href="Crear.html">+ Crear Cliente</a>
+
+            <div style="display: flex; justify-content: flex-end; margin-bottom: 20px;">
+                <form id="buscarClienteForm" style="display: flex; align-items: center; gap: 10px;">
+                    <input type="text" id="buscarInput" placeholder="Buscar..." 
+                        style="padding: 8px 12px; border: 1px solid #ccc; border-radius: 20px; min-width: 220px;" />
+                    <button type="submit" class="btn-crear" title="Buscar">🔍</button>
+                </form>
+            </div>
+
+            <table class="tabla-datos">
+                <thead>
+                    <tr>
+                        <th>Cédula</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Teléfono</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="clientesBody">
+                    <!-- JS renderizará clientes aquí -->
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="../../js/clientes.js"></script>
+    
+<script src="../../js/layout.js"></script>
+
+
+</body>
+</html>

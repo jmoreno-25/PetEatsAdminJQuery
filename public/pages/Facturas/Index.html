@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Listado de Facturas - Admin PetEats</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="../../css/style.css" />
+</head>
+<body style="min-height: 100vh; display: flex; flex-direction: column;">
+
+    <div id="header-placeholder"></div>
+
+    <main class="admin-content" style="flex: 1;">
+        <section class="content">
+            <h2>Listado de Facturas</h2>
+
+            <div id="mensaje-exito" class="alerta-exito" style="display:none;"></div>
+
+            <div style="display: flex; justify-content: flex-end; margin-bottom: 20px;">
+                <form id="buscarFacturaForm" style="display: flex; align-items: center; gap: 10px;">
+                    <input type="text" id="buscarInput" placeholder="Buscar..." 
+                           style="padding: 8px 12px; border: 1px solid #ccc; border-radius: 20px; min-width: 220px;" />
+                    <button type="submit" class="btn-crear" title="Buscar" style="padding: 8px 15px; display: flex; align-items: center;">
+                        🔍
+                    </button>
+                </form>
+            </div>
+
+            <table class="tabla-datos">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th> Cédula Cliente</th>
+                        <th>Nombre Cliente</th>
+                        <th>Apellido Cliente</th>
+                        <th>Fecha</th>
+                        <th>Subtotal</th>
+                        <th>Iva</th>
+                        <th>Total</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="facturasBody">
+                    <!-- Se llenará con JS -->
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="../../js/facturas.js"></script>
+    <script src="../../js/layout.js"></script>
+
+</body>
+</html>

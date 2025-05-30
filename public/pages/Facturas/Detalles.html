@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Detalle de Factura - Admin PetEats</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="../../css/style.css" />
+</head>
+<body style="min-height: 100vh; display: flex; flex-direction: column;">
+
+    <div id="header-placeholder"></div>
+
+    <main class="admin-content" style="flex: 1;">
+        <section class="content">
+            <h2>Factura #<span id="facturaId"></span></h2>
+
+            <p><strong>Cliente:</strong> <span id="clienteRUC"></span></p>
+            <p><strong>Fecha:</strong> <span id="facturaFecha"></span></p>
+            <p><strong>Total:</strong> $<span id="facturaTotal"></span></p>
+
+            <form id="estadoForm" style="margin-top: 20px;">
+                <input type="hidden" id="facturaIdInput" />
+                <label><strong>Estado:</strong></label>
+                <select id="nuevoEstado">
+                    <option value="ACT">Activo</option>
+                    <option value="PEN">Pendiente</option>
+                    <option value="PAG">Pagado</option>
+                    <option value="ANU">Anulado</option>
+                </select>
+                <button type="submit">Actualizar Estado</button>
+            </form>
+
+            <h3 style="margin-top: 40px;">Detalle de Productos</h3>
+            <table class="tabla-datos">
+                <thead>
+                    <tr>
+                        <th>Id Producto</th>
+                        <th>Nombre Producto</th>
+                        <th>Precio Unitario</th>
+                        <th>Cantidad</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody id="detalleProductos">
+                    <!-- Se llena por JS -->
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="../../js/detalleFacturas.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const facturaId = new URLSearchParams(window.location.search).get('id');
+            cargarFactura(facturaId);
+            cargarDetalleFactura(facturaId);
+        });
+
+        document.getElementById('estadoForm').addEventListener('submit', e => {
+            const facturaId = new URLSearchParams(window.location.search).get('id');
+            e.preventDefault();
+            const nuevoEstado = document.getElementById('nuevoEstado').value;
+            actualizarFactura(facturaId,nuevoEstado);
+        });
+    </script>
+    <script src="../../js/layout.js"></script>
+
+</body>
+</html>

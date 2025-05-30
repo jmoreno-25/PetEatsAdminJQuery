@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Crear Cliente - Admin PetEats</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="../../css/style.css" />
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <main class="admin-content">
+        <section class="content">
+            <h2>Crear Cliente</h2>
+            <form id="crearClienteForm">
+                <label>Cédula o RUC</label>
+                <input type="text" name="CLI_CEDULA_RUC" required />
+
+                <label>Nombre</label>
+                <input type="text" name="CLI_NOMBRE" required />
+
+                <label>Apellido</label>
+                <input type="text" name="CLI_APELLIDO" required />
+
+                <label>Teléfono</label>
+                <input type="text" name="CLI_TELEFONO" required />
+
+                <label>Estado</label>
+                <select name="CLI_ESTADO">
+                    <option>Activo</option>
+                    <option>Inactivo</option>
+                </select>
+
+                <button type="submit" class="btn-crear">Guardar</button>
+            </form>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="../../js/clientes.js"></script>
+    <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("crearClienteForm");
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const cliente = {
+        CLI_CEDULA_RUC: form.CLI_CEDULA_RUC.value,
+        CLI_NOMBRE: form.CLI_NOMBRE.value,
+        CLI_APELLIDO: form.CLI_APELLIDO.value,
+        CLI_TELEFONO: form.CLI_TELEFONO.value,
+        CLI_ESTADO: form.CLI_ESTADO.value
+      };
+
+      crearCliente(cliente); // 💥 Aquí llamas a la función del clientes.js
+    });
+  });
+</script>
+    <script src="../../js/layout.js"></script>
+
+</body>
+</html>

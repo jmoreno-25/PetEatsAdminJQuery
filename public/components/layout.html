@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Admin PetEats</title>
+    <link rel="stylesheet" href="/public/css/style.css" />
+</head>
+<body style="min-height: 100vh; display: flex; flex-direction: column;">
+
+    <div id="header-placeholder"></div>
+
+    <main class="admin-content" style="flex: 1;">
+        <!-- AQUÍ CARGAS TU CONTENIDO DE LA VISTA -->
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script>
+        // Cargar Header y Footer dinámicamente
+        fetch('public/componentes/header.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('header-placeholder').innerHTML = data);
+
+        fetch('public/componentes/footer.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('footer-placeholder').innerHTML = data);
+    </script>
+
+</body>
+</html>

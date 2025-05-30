@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Detalles Producto - Admin PetEats</title>
+    <link rel="stylesheet" href="../../css/style.css" />
+</head>
+<body style="min-height: 100vh; display: flex; flex-direction: column;">
+
+    <div id="header-placeholder"></div>
+
+    <main class="admin-content" style="flex: 1;">
+        <section class="content">
+            <h2>Producto #<span id="productoId"></span></h2>
+
+            <p><strong>Nombre:</strong> <span id="nombreProducto"></span></p>
+            <p><strong>Precio:</strong> $<span id="precioProducto"></span></p>
+            <p><strong>Categoría:</strong> <span id="categoriaProducto"></span></p>
+            <p><strong>Animal:</strong> <span id="animalProducto"></span></p>
+            <p><strong>Descripción:</strong> <span id="descripcionProducto"></span></p>
+            <p><strong>Estado:</strong> <span id="estadoProducto"></span></p>
+
+            <a class="btn-editar" href="Editar.html?id=1">Editar</a>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="../../js/productos.js"></script>
+    <script>
+        
+        const productoId = new URLSearchParams(window.location.search).get('id') || '1';
+        document.getElementById('productoId').innerText = productoId;
+
+        cargarProductoPorId(productoId);
+    </script>
+    <script src="../../js/layout.js"></script>
+
+</body>
+</html>
