@@ -81,7 +81,7 @@ async function cargarVentasPorMes(anio) {
     ];
 
     data.sort((a, b) => a.Mes - b.Mes);
-    ventasBarChart.data.labels = data.map(item => `${mesesNombre[item.Mes - 1]} ${item.Anio}`);
+    ventasBarChart.data.labels = data.map(item => `${mesesNombre[item.Mes - 1]}`);
     ventasBarChart.data.datasets[0].data = data.map(item => Number(item.Total_Ventas));
     ventasBarChart.update();
 
