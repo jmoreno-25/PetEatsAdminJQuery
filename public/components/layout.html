@@ -1,31 +1,116 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>Admin PetEats</title>
-    <link rel="stylesheet" href="/public/css/style.css" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Inicio - Admin PetEats</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="/public/css/style.css" />
 </head>
-<body style="min-height: 100vh; display: flex; flex-direction: column;">
+<body>
+  <div class="container-fluid">
+    <div class="row flex-nowrap min-vh-100">
+      
+      <!-- SIDEBAR -->
+      <aside class="col-auto col-md-3 col-xl-2 bg-success text-white d-flex flex-column p-3 min-vh-100 shadow-sm">
+        <a href="/index.html" class="d-flex align-items-center mb-4 text-white text-decoration-none">
+          <i class="bi bi-house-door-fill me-2 fs-4"></i>
+          <span class="fs-5 fw-semibold">PetEats Admin</span>
+        </a>
+        <ul class="nav nav-pills flex-column mb-auto">
+          <li class="nav-item">
+            <a href="/index.html" class="nav-link text-white d-flex align-items-center">
+              <i class="bi bi-speedometer2 me-2"></i> Inicio
+            </a>
+          </li>
+          <li>
+            <a href="/public/pages/Productos/Index.html" class="nav-link text-white d-flex align-items-center">
+              <i class="bi bi-box-seam me-2"></i> Productos
+            </a>
+          </li>
+          <li>
+            <a href="/public/pages/Facturas/Index.html" class="nav-link text-white d-flex align-items-center">
+              <i class="bi bi-receipt me-2"></i> Facturas
+            </a>
+          </li>
+          <li>
+            <a href="/public/pages/Clientes/Index.html" class="nav-link text-white d-flex align-items-center">
+              <i class="bi bi-people-fill me-2"></i> Clientes
+            </a>
+          </li>
+          <li>
+            <a href="/public/pages/Estadisticas/Index.html" class="nav-link text-white d-flex align-items-center">
+              <i class="bi bi-bar-chart-line me-2"></i> Estadísticas
+            </a>
+          </li>
+        </ul>
+        <hr class="text-white">
+        <footer class="text-center text-white-50 small mt-auto">
+          &copy; <span id="year"></span> PetEats
+        </footer>
+      </aside>
 
-    <div id="header-placeholder"></div>
+      <!-- CONTENIDO -->
+      <div class="col py-3">
+        <div class="d-flex justify-content-between align-items-center px-4 py-3 border-bottom bg-white shadow-sm">
+          <h5 class="mb-0 fw-bold text-success">Admin PetEats</h5>
+        </div>
 
-    <main class="admin-content" style="flex: 1;">
-        <!-- AQUÍ CARGAS TU CONTENIDO DE LA VISTA -->
-    </main>
+        <main class="flex-grow-1 px-4 py-5">
+          <h2 class="text-center fw-bold text-success mb-4">Bienvenido al Panel Administrador de PetEats</h2>
+          <p class="text-center text-muted mb-5">Accede rápidamente a los módulos de gestión:</p>
 
-    <div id="footer-placeholder"></div>
+          <div class="row g-4 justify-content-center">
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+              <a href="/public/pages/Productos/Index.html" class="text-decoration-none">
+                <div class="card shadow-sm border-0 text-center p-4 h-100">
+                  <i class="bi bi-box-seam display-4 text-success mb-3"></i>
+                  <h5 class="fw-bold text-dark">Productos</h5>
+                  <p class="text-muted">Gestión completa del catálogo</p>
+                </div>
+              </a>
+            </div>
 
-    <script>
-        // Cargar Header y Footer dinámicamente
-        fetch('public/componentes/header.html')
-            .then(response => response.text())
-            .then(data => document.getElementById('header-placeholder').innerHTML = data);
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+              <a href="/public/pages/Facturas/Index.html" class="text-decoration-none">
+                <div class="card shadow-sm border-0 text-center p-4 h-100">
+                  <i class="bi bi-receipt display-4 text-warning mb-3"></i>
+                  <h5 class="fw-bold text-dark">Facturas</h5>
+                  <p class="text-muted">Consulta y control de pedidos</p>
+                </div>
+              </a>
+            </div>
 
-        fetch('public/componentes/footer.html')
-            .then(response => response.text())
-            .then(data => document.getElementById('footer-placeholder').innerHTML = data);
-    </script>
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+              <a href="/public/pages/Clientes/Index.html" class="text-decoration-none">
+                <div class="card shadow-sm border-0 text-center p-4 h-100">
+                  <i class="bi bi-people-fill display-4 text-info mb-3"></i>
+                  <h5 class="fw-bold text-dark">Clientes</h5>
+                  <p class="text-muted">Lista y administración de usuarios</p>
+                </div>
+              </a>
+            </div>
 
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+              <a href="/public/pages/Estadisticas/Index.html" class="text-decoration-none">
+                <div class="card shadow-sm border-0 text-center p-4 h-100">
+                  <i class="bi bi-bar-chart-line-fill display-4 text-secondary mb-3"></i>
+                  <h5 class="fw-bold text-dark">Estadísticas</h5>
+                  <p class="text-muted">Análisis de ventas y rendimiento</p>
+                </div>
+              </a>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

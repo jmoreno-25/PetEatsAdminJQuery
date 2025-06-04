@@ -17,28 +17,49 @@ $(document).ready(function () {
 });
 
 function renderFacturas(facturas) {
-    const tbody = document.getElementById("facturasBody");
-    tbody.innerHTML = "";
+  const contenedor = document.getElementById("facturasBody");
+  contenedor.innerHTML = "";
 
-    facturas.forEach(f => {
-        const row = document.createElement("tr");
+  facturas.forEach(f => {
+    const card = document.createElement("div");
+    card.className = "card shadow-sm p-3 d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center";
 
-        row.innerHTML = `
-            <td>${f.FAC_ID}</td>
-            <td>${f.CLI_CEDULA_RUC}</td>
-            <td>${f.CLI_NOMBRE}</td>
-            <td>${f.CLI_APELLIDO}</td>
-            <td>${f.FAC_FECHA}</td>
-            <td>${f.FAC_SUBTOTAL}</td>
-            <td>${f.FAC_IVA}</td>
-            <td>$${f.FAC_TOTAL.toFixed(2)}</td>
-            <td>${f.FAC_ESTADO}</td>
-            <td><a href="Detalles.html?id=${f.FAC_ID}">🧾</a></td>
-        `;
+    card.innerHTML = `
+      <div class="flex-grow-1">
+        <h5 class="fw-bold text-success mb-2">
+          <i class="bi bi-receipt me-2"></i>Factura #${f.FAC_ID}
+        </h5>
 
-        tbody.appendChild(row);
-    });
+        <div class="row">
+          <div class="col-md-6 mb-2">
+            <p class="mb-1"><i class="bi bi-person me-1"></i><strong>Cliente:</strong> ${f.CLI_CEDULA_RUC} - ${f.CLI_NOMBRE} ${f.CLI_APELLIDO}</p>
+          </div>
+          <div class="col-md-6 mb-2">
+            <p class="mb-1"><i class="bi bi-calendar me-1"></i><strong>Fecha:</strong> ${f.FAC_FECHA}</p>
+          </div>
+
+          <div class="col-md-6 mb-2">
+            <p class="mb-1"><i class="bi bi-currency-dollar me-1"></i><strong>Total:</strong> $${f.FAC_TOTAL.toFixed(2)}</p>
+          </div>
+          <div class="col-md-6 mb-2">
+            <span class="badge px-3 py-2 ${f.FAC_ESTADO === 'PAG' ? 'bg-success' : 'bg-warning text-dark'}">
+              ${f.FAC_ESTADO}
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <a href="Detalles.html?id=${f.FAC_ID}" title="Ver Detalle">
+          <i class="bi bi-eye fs-4 text-secondary"></i>
+        </a>
+      </div>
+    `;
+
+    contenedor.appendChild(card);
+  });
 }
+
 function renderDetalles(factura) {
     const tbody = document.getElementById("detalleProductos");
     tbody.innerHTML = "";

@@ -1,58 +1,67 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>Listado de Facturas - Admin PetEats</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link rel="stylesheet" href="../../css/style.css" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>Listado de Facturas - Admin PetEats</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <!-- Bootstrap y estilos -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css" />
 </head>
-<body style="min-height: 100vh; display: flex; flex-direction: column;">
+<body class="bg-light">
 
-    <div id="header-placeholder"></div>
+  <div class="container-fluid">
+    <div class="row flex-nowrap min-vh-100">
 
-    <main class="admin-content" style="flex: 1;">
-        <section class="content">
-            <h2>Listado de Facturas</h2>
+      <!-- SIDEBAR -->
+      <aside class="col-auto col-md-3 col-xl-2 bg-success text-white d-flex flex-column p-3 shadow-sm">
+        <a href="/index.html" class="d-flex align-items-center mb-4 text-white text-decoration-none">
+          <i class="bi bi-house-door-fill me-2 fs-4"></i>
+          <span class="fs-5 fw-semibold">PetEats Admin</span>
+        </a>
+        <ul class="nav nav-pills flex-column mb-auto">
+          <li><a href="/index.html" class="nav-link text-white"><i class="bi bi-speedometer2 me-2"></i> Inicio</a></li>
+          <li><a href="/public/pages/Productos/Index.html" class="nav-link text-white"><i class="bi bi-box-seam me-2"></i> Productos</a></li>
+          <li><a href="/public/pages/Facturas/Index.html" class="nav-link active bg-white text-success"><i class="bi bi-receipt me-2"></i> Facturas</a></li>
+          <li><a href="/public/pages/Clientes/Index.html" class="nav-link text-white"><i class="bi bi-people-fill me-2"></i> Clientes</a></li>
+          <li><a href="/public/pages/Estadisticas/Index.html" class="nav-link text-white"><i class="bi bi-bar-chart-line me-2"></i> Estadísticas</a></li>
+        </ul>
+      </aside>
 
-            <div id="mensaje-exito" class="alerta-exito" style="display:none;"></div>
+      <!-- CONTENIDO -->
+      <div class="col py-4 px-5">
+    
 
-            <div style="display: flex; justify-content: flex-end; margin-bottom: 20px;">
-                <form id="buscarFacturaForm" style="display: flex; align-items: center; gap: 10px;">
-                    <input type="text" id="buscarInput" placeholder="Buscar..." 
-                           style="padding: 8px 12px; border: 1px solid #ccc; border-radius: 20px; min-width: 220px;" />
-                    <button type="submit" class="btn-crear" title="Buscar" style="padding: 8px 15px; display: flex; align-items: center;">
-                        🔍
-                    </button>
-                </form>
-            </div>
+        <div class="card shadow-sm p-4">
+          <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="text-success fw-bold mb-0"><i class="bi bi-receipt me-2"></i>Listado de Facturas</h2>
+            <form id="buscarFacturaForm" class="d-flex align-items-center gap-2" style="max-width: 400px;">
+              <input
+                type="text"
+                id="buscarInput"
+                class="form-control form-control-sm rounded-pill"
+                placeholder="Buscar por ID, cédula o nombre..."
+              />
+              <button type="submit" class="btn btn-outline-success rounded-circle" title="Buscar">
+                <i class="bi bi-search"></i>
+              </button>
+            </form>
+          </div>
 
-            <table class="tabla-datos">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th> Cédula Cliente</th>
-                        <th>Nombre Cliente</th>
-                        <th>Apellido Cliente</th>
-                        <th>Fecha</th>
-                        <th>Subtotal</th>
-                        <th>Iva</th>
-                        <th>Total</th>
-                        <th>Estado</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody id="facturasBody">
-                    <!-- Se llenará con JS -->
-                </tbody>
-            </table>
-        </section>
-    </main>
+          <div id="mensaje-exito" class="alert alert-success" style="display: none;"></div>
 
-    <div id="footer-placeholder"></div>
+          <div id="facturasBody" class="d-flex flex-column gap-3">
+            <!-- Tarjetas de facturas insertadas por JS -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-    <script src="../../js/facturas.js"></script>
-    <script src="../../js/layout.js"></script>
-
+  <script src="../../js/facturas.js"></script>
+  <script src="../../js/layout.js"></script>
 </body>
 </html>

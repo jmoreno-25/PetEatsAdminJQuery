@@ -44,26 +44,42 @@ function configurarBuscador() {
 
 
 function renderClientes(lista) {
-    const tbody = document.getElementById("clientesBody");
-    tbody.innerHTML = "";
-    lista.forEach(c => {
-        const row = document.createElement("tr");
-       row.innerHTML = `
-            <td>${c.CLI_CEDULA_RUC}</td>
-            <td>${c.CLI_NOMBRE}</td>
-            <td>${c.CLI_APELLIDO}</td>
-            <td>${c.CLI_TELEFONO}</td>
-            <td>${c.CLI_ESTADO === "ACT" ? "Activo" : "Inactivo"}</td>
-            <td>
-                <div class="acciones-botones">
-                    <a href="Crear.html">➕</a> |
-                    <a href="Editar.html?id=${c.CLI_CEDULA_RUC}">✏️</a>
-                </div>
-            </td>
-        `;
+  const contenedor = document.getElementById("clientesBody");
+  contenedor.innerHTML = "";
 
-        tbody.appendChild(row);
-    });
+  lista.forEach(c => {
+    const row = document.createElement("div");
+    row.className = "card shadow-sm border-0 p-3 d-flex flex-md-row align-items-center gap-3 mb-3";
+    row.style.backgroundColor = "#fdfdfd";
+
+    let estadoBadge = c.CLI_ESTADO === "ACT"
+      ? '<span class="badge bg-success">Activo</span>'
+      : '<span class="badge bg-secondary">Inactivo</span>';
+
+    row.innerHTML = `
+      <div class="flex-grow-1">
+        <h5 class="mb-2 text-success fw-bold">${c.CLI_NOMBRE} ${c.CLI_APELLIDO}</h5>
+        <div class="row">
+          <div class="col-md-4"><strong>Cédula:</strong> ${c.CLI_CEDULA_RUC}</div>
+          <div class="col-md-4"><strong>Teléfono:</strong> ${c.CLI_TELEFONO}</div>
+          <div class="col-md-4">${estadoBadge}</div>
+        </div>
+      </div>
+
+      <div class="d-flex flex-column gap-2 justify-content-center align-items-end">
+        <a href="Detalles.html?id=${c.CLI_CEDULA_RUC}" title="Ver detalles">
+          <i class="bi bi-eye fs-5 text-secondary"></i>
+        </a>
+        <a href="Editar.html?id=${c.CLI_CEDULA_RUC}" class="btn btn-sm btn-pastel-green d-flex align-items-center gap-1">
+          <i class="bi bi-pencil"></i>
+        </a>
+        <button onclick="eliminarCliente('${c.CLI_CEDULA_RUC}')" class="btn btn-sm d-flex align-items-center gap-1" style="background-color:#f8d7da; color:#721c24; border:none;">
+          <i class="bi bi-trash"></i>
+        </button>
+      </div>
+    `;
+    contenedor.appendChild(row);
+  });
 }
 
 function crearCliente(cliente) {

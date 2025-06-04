@@ -1,84 +1,127 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-
-    <title>Editar Producto - Admin PetEats</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link rel="stylesheet" href="../../css/style.css" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>Editar Producto - Admin PetEats</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css" />
 </head>
-<body style="min-height: 100vh; display: flex; flex-direction: column;">
+<body class="bg-light" style="min-height: 100vh; display: flex; flex-direction: column;">
 
-    <div id="header-placeholder"></div>
+  <div class="container-fluid">
+    <div class="row flex-nowrap min-vh-100">
 
-    <main class="admin-content" style="flex: 1;">
-        <section class="content">
-            <h2>Editar Producto #<span id="productoId"></span></h2>
+      <!-- SIDEBAR -->
+      <aside class="col-auto col-md-3 col-xl-2 bg-success text-white d-flex flex-column p-3 shadow-sm">
+        <a href="/index.html" class="d-flex align-items-center mb-4 text-white text-decoration-none">
+          <i class="bi bi-house-door-fill me-2 fs-4"></i>
+          <span class="fs-5 fw-semibold">PetEats Admin</span>
+        </a>
+        <ul class="nav nav-pills flex-column mb-auto">
+          <li><a href="/index.html" class="nav-link text-white"><i class="bi bi-speedometer2 me-2"></i> Inicio</a></li>
+          <li><a href="/public/pages/Productos/Index.html" class="nav-link active bg-white text-success"><i class="bi bi-box-seam me-2"></i> Productos</a></li>
+          <li><a href="/public/pages/Facturas/Index.html" class="nav-link text-white"><i class="bi bi-receipt me-2"></i> Facturas</a></li>
+          <li><a href="/public/pages/Clientes/Index.html" class="nav-link text-white"><i class="bi bi-people-fill me-2"></i> Clientes</a></li>
+          <li><a href="/public/pages/Estadisticas/Index.html" class="nav-link text-white"><i class="bi bi-bar-chart-line me-2"></i> Estadísticas</a></li>
+        </ul>
+      </aside>
 
-            <form id="editarProductoForm">
-                <label>Nombre</label>
-                <input type="text" name="PRD_NOMBRE" required>
+      <!-- CONTENIDO PRINCIPAL -->
+      <main class="col py-4 px-5">
+        <!-- HEADER -->
 
-                <label>Precio</label>
-                <input type="number" step="0.01" name="PRD_PRECIO" required>
+        <div class="card shadow-sm p-4">
+          <h2 class="text-success fw-bold mb-4">
+            <i class="bi bi-pencil-square me-2"></i>Editar Producto #<span id="productoId"></span>
+          </h2>
 
-                <label>Categoría</label>
-                <select name="CAT_ID" id="categoriasSelect" required></select>
+          <form id="editarProductoForm" class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label">Nombre</label>
+              <input type="text" name="PRD_NOMBRE" class="form-control" required>
+            </div>
 
-                <label>Animal</label>
-                <select name="T_ANIMAL_ID" id="animalesSelect" required></select>
+            <div class="col-md-6">
+              <label class="form-label">Precio</label>
+              <input type="number" step="0.01" name="PRD_PRECIO" class="form-control" required>
+            </div>
 
-                <label>Descripción</label>
-                <textarea name="PRD_DESCRIPCION" required></textarea>
+            <div class="col-md-6">
+              <label class="form-label">Categoría</label>
+              <select name="CAT_ID" id="categoriasSelect" class="form-select" required></select>
+            </div>
 
-                <label>Stock</label>
-                <input type="number" name="PRD_STOCK" required>
+            <div class="col-md-6">
+              <label class="form-label">Animal</label>
+              <select name="T_ANIMAL_ID" id="animalesSelect" class="form-select" required></select>
+            </div>
 
-                <label>Imagen (URL)</label>
-                <input type="url" name="PRD_IMAGEN" required>
+            <div class="col-12">
+              <label class="form-label">Descripción</label>
+              <textarea name="PRD_DESCRIPCION" class="form-control" rows="2" required></textarea>
+            </div>
 
-                <label>Estado</label>
-                <select name="PRD_ESTADO" required>
-                    <option value="ACT">Activo</option>
-                    <option value="INA">Inactivo</option>
-                </select>
+            <div class="col-md-6">
+              <label class="form-label">Stock</label>
+              <input type="number" name="PRD_STOCK" class="form-control" required>
+            </div>
 
-                <button type="submit" class="btn-crear">Actualizar</button>
-            </form>
-        </section>
-    </main>
+            <div class="col-md-6">
+              <label class="form-label">Imagen (URL)</label>
+              <input type="url" name="PRD_IMAGEN" class="form-control" required>
+            </div>
 
-    <div id="footer-placeholder"></div>
+            <div class="col-md-6">
+              <label class="form-label">Estado</label>
+              <select name="PRD_ESTADO" class="form-select" required>
+                <option value="ACT">Activo</option>
+                <option value="INA">Inactivo</option>
+                <option value="DES">Destacado</option>
+              </select>
+            </div>
 
-    <script src="../../js/productos.js"></script>
-    <script>
+            <div class="col-12 d-flex justify-content-end mt-3">
+              <button type="submit" class="btn btn-success px-4 rounded-pill">
+                <i class="bi bi-check2-circle me-1"></i> Actualizar
+              </button>
+            </div>
+          </form>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="../../js/productos.js"></script>
+  <script>
     const id = new URLSearchParams(window.location.search).get('id');
     document.getElementById('productoId').innerText = id;
 
     cargarCategoriasYAnimales().then(() => {
-        cargarProductoPorId(id);
+      cargarProductoPorId(id);
     });
 
     document.getElementById('editarProductoForm').addEventListener('submit', (e) => {
-        e.preventDefault();
-        const form = e.target;
-        const producto = {
-            PRD_NOMBRE: form.querySelector('[name="PRD_NOMBRE"]').value,
-            PRD_PRECIO: parseFloat(form.querySelector('[name="PRD_PRECIO"]').value),
-            CAT_ID: parseInt(form.querySelector('[name="CAT_ID"]').value),
-            T_ANIMAL_ID: parseInt(form.querySelector('[name="T_ANIMAL_ID"]').value),
-            PRD_DESCRIPCION: form.querySelector('[name="PRD_DESCRIPCION"]').value,
-            PRD_STOCK: parseInt(form.querySelector('[name="PRD_STOCK"]').value),
-            PRD_IMAGEN: form.querySelector('[name="PRD_IMAGEN"]').value,
-            PRD_ESTADO: form.querySelector('[name="PRD_ESTADO"]').value
-        };
+      e.preventDefault();
+      const form = e.target;
+      const producto = {
+        PRD_NOMBRE: form.querySelector('[name="PRD_NOMBRE"]').value,
+        PRD_PRECIO: parseFloat(form.querySelector('[name="PRD_PRECIO"]').value),
+        CAT_ID: parseInt(form.querySelector('[name="CAT_ID"]').value),
+        T_ANIMAL_ID: parseInt(form.querySelector('[name="T_ANIMAL_ID"]').value),
+        PRD_DESCRIPCION: form.querySelector('[name="PRD_DESCRIPCION"]').value,
+        PRD_STOCK: parseInt(form.querySelector('[name="PRD_STOCK"]').value),
+        PRD_IMAGEN: form.querySelector('[name="PRD_IMAGEN"]').value,
+        PRD_ESTADO: form.querySelector('[name="PRD_ESTADO"]').value
+      };
 
-        actualizarProducto(id, producto);
+      actualizarProducto(id, producto);
     });
-</script>
-
-    <script src="../../js/layout.js"></script>
-
+  </script>
+  <script src="../../js/layout.js"></script>
 </body>
 </html>
