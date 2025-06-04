@@ -53,9 +53,7 @@ if (p.PRD_ESTADO === 'ACT') {
       </div>
 
         <div class="d-flex flex-column gap-2 justify-content-center align-items-end">
-      <a href="Detalles.html?id=${p.PRD_ID}" title="Ver detalles">
-          <i class="bi bi-eye fs-5 text-secondary"></i>
-        </a>
+      
         <a href="Editar.html?id=${p.PRD_ID}" class="btn btn-sm btn-pastel-green d-flex align-items-center gap-1">
           <i class="bi bi-pencil"></i>
         </a>
