@@ -67,7 +67,7 @@
     document.getElementById('editarBtn').href += clienteId;
 
     // Cargar cliente y colocar datos en los campos
-    fetch(`http://backendpeteats.runasp.net/api/clientes/${clienteId}`)
+    fetch(`https://backendpeteats.runasp.net/api/clientes/${clienteId}`)
       .then(res => res.json())
       .then(cliente => {
         document.getElementById("clienteNombre").innerText = `${cliente.CLI_NOMBRE} ${cliente.CLI_APELLIDO}`;

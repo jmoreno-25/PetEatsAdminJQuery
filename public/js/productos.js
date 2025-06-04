@@ -1,5 +1,5 @@
 let productos = [];
-const API_BASE_URL = "http://backendpeteats.runasp.net/api/productos";
+const API_BASE_URL = "https://backendpeteats.runasp.net/api/productos";
 
 $(document).ready(function () {
   $.ajax({

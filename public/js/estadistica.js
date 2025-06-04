@@ -1,4 +1,4 @@
-const API_PRODUCTOS = "http://backendpeteats.runasp.net/api/productos-mas-vendidos";
+const API_PRODUCTOS = "https://backendpeteats.runasp.net/api/productos-mas-vendidos";
 let ventasBarChart, productosPieChart;
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 async function cargarVentasPorMes(anio) {
   try {
-    const res = await fetch(`http://backendpeteats.runasp.net/api/ventas-por-mes/${anio}`);
+    const res = await fetch(`https://backendpeteats.runasp.net/api/ventas-por-mes/${anio}`);
     const data = await res.json();
 
     const mesesNombre = [

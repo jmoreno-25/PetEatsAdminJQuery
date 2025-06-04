@@ -1,5 +1,5 @@
-API_BASE_URL = "http://backendpeteats.runasp.net/api/detallefacturas";
-API_BASE_FAC_URL = "http://backendpeteats.runasp.net/api/facturas";
+API_BASE_URL = "https://backendpeteats.runasp.net/api/detallefacturas";
+API_BASE_FAC_URL = "https://backendpeteats.runasp.net/api/facturas";
 
 function actualizarFactura(id, estado) {
 
