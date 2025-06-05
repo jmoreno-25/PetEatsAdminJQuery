@@ -66,7 +66,7 @@
 
             <div class="col-md-6">
               <label class="form-label">Stock</label>
-              <input type="number" name="PRD_STOCK" class="form-control" required>
+              <input type="number" name="PRD_STOCK" class="form-control" required min="1">
             </div>
 
             <div class="col-md-6">
@@ -108,13 +108,19 @@
     document.getElementById('editarProductoForm').addEventListener('submit', (e) => {
       e.preventDefault();
       const form = e.target;
+      const stock = parseInt(form.querySelector('[name="PRD_STOCK"]').value);
+      if (stock < 1) {
+        alert('El stock debe ser mayor a 0.');
+        form.querySelector('[name="PRD_STOCK"]').focus();
+        return;
+      }
       const producto = {
         PRD_NOMBRE: form.querySelector('[name="PRD_NOMBRE"]').value,
         PRD_PRECIO: parseFloat(form.querySelector('[name="PRD_PRECIO"]').value),
         CAT_ID: parseInt(form.querySelector('[name="CAT_ID"]').value),
         T_ANIMAL_ID: parseInt(form.querySelector('[name="T_ANIMAL_ID"]').value),
         PRD_DESCRIPCION: form.querySelector('[name="PRD_DESCRIPCION"]').value,
-        PRD_STOCK: parseInt(form.querySelector('[name="PRD_STOCK"]').value),
+        PRD_STOCK: stock,
         PRD_IMAGEN: form.querySelector('[name="PRD_IMAGEN"]').value,
         PRD_ESTADO: form.querySelector('[name="PRD_ESTADO"]').value
       };
