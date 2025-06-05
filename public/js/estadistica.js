@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
       datasets: [{
         label: "Ventas",
         data: [],
-        backgroundColor: "rgba(54, 162, 235, 0.7)"
+        backgroundColor: "rgba(22, 172, 52, 0.7)"
       }]
     },
     options: {
