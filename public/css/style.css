@@ -344,3 +344,45 @@ body {
     width: calc(100% - 250px);
   }
 }
+
+/* Sidebar responsive para móviles y tablets */
+@media (max-width: 991px) {
+  .fixed-sidebar {
+    position: fixed;
+    left: -250px;
+    top: 0;
+    width: 250px;
+    height: 100vh;
+    background: #198754;
+    transition: left 0.3s;
+    z-index: 2000;
+    box-shadow: 2px 0 8px rgba(0,0,0,0.08);
+  }
+  .fixed-sidebar.active {
+    left: 0;
+  }
+  .main-content {
+    margin-left: 0 !important;
+    width: 100% !important;
+  }
+  .sidebar-toggle-btn {
+    display: block;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 2100;
+    background: #198754;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    font-size: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  }
+}
+@media (min-width: 992px) {
+  .sidebar-toggle-btn {
+    display: none;
+  }
+}
