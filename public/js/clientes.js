@@ -1,6 +1,6 @@
 let clientes = [];
 
-API_BASE_URL = "http://backendpeteats.runasp.net/api/clientes";
+API_BASE_URL = "https://backendpeteats.runasp.net/api/clientes";
 
 document.getElementById("buscarClienteForm").addEventListener("submit", function (e) {
     e.preventDefault();

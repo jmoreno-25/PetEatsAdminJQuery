@@ -1,6 +1,6 @@
 let facturas = [];
-API_BASE_URL = "http://backendpeteats.runasp.net/api/facturas";
-API_BASE_DETALLE_URL = "http://backendpeteats.runasp.net/api/detallefacturas";
+API_BASE_URL = "https://backendpeteats.runasp.net/api/facturas";
+API_BASE_DETALLE_URL = "https://backendpeteats.runasp.net/api/detallefacturas";
 $(document).ready(function () {
     $.ajax({
         url: API_BASE_URL,
