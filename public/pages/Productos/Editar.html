@@ -109,14 +109,22 @@
       e.preventDefault();
       const form = e.target;
       const stock = parseInt(form.querySelector('[name="PRD_STOCK"]').value);
+      const precio = parseFloat(form.querySelector('[name="PRD_PRECIO"]').value);
+
       if (stock < 1) {
         alert('El stock debe ser mayor a 0.');
         form.querySelector('[name="PRD_STOCK"]').focus();
         return;
       }
+      if (precio <= 0 || isNaN(precio)) {
+        alert('El precio debe ser mayor a 0.');
+        form.querySelector('[name="PRD_PRECIO"]').focus();
+        return;
+      }
+
       const producto = {
         PRD_NOMBRE: form.querySelector('[name="PRD_NOMBRE"]').value,
-        PRD_PRECIO: parseFloat(form.querySelector('[name="PRD_PRECIO"]').value),
+        PRD_PRECIO: precio,
         CAT_ID: parseInt(form.querySelector('[name="CAT_ID"]').value),
         T_ANIMAL_ID: parseInt(form.querySelector('[name="T_ANIMAL_ID"]').value),
         PRD_DESCRIPCION: form.querySelector('[name="PRD_DESCRIPCION"]').value,
