@@ -172,6 +172,8 @@ function cargarProductoPorId(id) {
       form.querySelector('[name="PRD_DESCRIPCION"]').value = producto.PRD_DESCRIPCION || '';
       form.querySelector('[name="PRD_STOCK"]').value = producto.PRD_STOCK || '';
       form.querySelector('[name="PRD_IMAGEN"]').value = producto.PRD_IMAGEN || '';
+      form.querySelector('[name="PRD_IMAGEN2"]').value = producto.PRD_IMAGEN2 || '';
+      form.querySelector('[name="PRD_IMAGEN3"]').value = producto.PRD_IMAGEN3 || '';
       form.querySelector('[name="PRD_ESTADO"]').value = producto.PRD_ESTADO || 'ACT';
 
       setTimeout(() => {

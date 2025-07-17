@@ -73,7 +73,14 @@
               <label class="form-label">Imagen (URL)</label>
               <input type="url" name="PRD_IMAGEN" class="form-control" required>
             </div>
-
+            <div class="col-md-6">
+              <label class="form-label">Imagen 2 (URL)</label>
+              <input type="url" name="PRD_IMAGEN2" class="form-control" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Imagen 3 (URL)</label>
+              <input type="url" name="PRD_IMAGEN3" class="form-control" required>
+            </div>
             <div class="col-md-6">
               <label class="form-label">Estado</label>
               <select name="PRD_ESTADO" class="form-select" required>
@@ -130,6 +137,8 @@
         PRD_DESCRIPCION: form.querySelector('[name="PRD_DESCRIPCION"]').value,
         PRD_STOCK: stock,
         PRD_IMAGEN: form.querySelector('[name="PRD_IMAGEN"]').value,
+        PRD_IMAGEN2: form.querySelector('[name="PRD_IMAGEN2"]').value,
+        PRD_IMAGEN3: form.querySelector('[name="PRD_IMAGEN3"]').value,
         PRD_ESTADO: form.querySelector('[name="PRD_ESTADO"]').value
       };
 

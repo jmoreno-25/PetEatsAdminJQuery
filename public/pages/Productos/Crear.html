@@ -53,7 +53,14 @@
               <label class="form-label">Imagen (URL)</label>
               <input type="url" name="PRD_IMAGEN" class="form-control" required>
             </div>
-
+             <div class="col-md-6">
+              <label class="form-label">Imagen 2  (URL)</label>
+              <input type="url" name="PRD_IMAGEN2" class="form-control" required>
+            </div>
+             <div class="col-md-6">
+              <label class="form-label">Imagen 3 (URL)</label>
+              <input type="url" name="PRD_IMAGEN3" class="form-control" required>
+            </div>
             <div class="col-md-6">
               <label class="form-label">Stock</label>
               <input type="number" name="PRD_STOCK" class="form-control" required>
@@ -107,6 +114,8 @@
     const nombre = form.PRD_NOMBRE.value.trim();
     const precio = parseFloat(form.PRD_PRECIO.value);
     const imagen = form.PRD_IMAGEN.value.trim();
+    const imagen2 = form.PRD_IMAGEN2.value.trim();
+    const imagen3 = form.PRD_IMAGEN3.value.trim();
     const descripcion = form.PRD_DESCRIPCION.value.trim();
     const stock = parseInt(form.PRD_STOCK.value);
     const catId = parseInt(form.CAT_ID.value);
@@ -114,7 +123,7 @@
     const estado = form.PRD_ESTADO.value;
 
     // Validación de campos vacíos
-    if (!nombre || !imagen || !descripcion || isNaN(precio) || isNaN(stock) || isNaN(catId) || isNaN(animalId) || !estado) {
+    if (!nombre || !imagen || !imagen2 || !imagen3 || !descripcion || isNaN(precio) || isNaN(stock) || isNaN(catId) || isNaN(animalId) || !estado) {
       alert("Todos los campos deben estar completos.");
       return;
     }
@@ -129,6 +138,8 @@
       PRD_NOMBRE: nombre,
       PRD_PRECIO: precio,
       PRD_IMAGEN: imagen,
+      PRD_IMAGEN2: imagen2,
+      PRD_IMAGEN3: imagen3,
       PRD_DESCRIPCION: descripcion,
       PRD_STOCK: stock,
       CAT_ID: catId,
