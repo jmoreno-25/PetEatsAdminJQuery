@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>Detalle de Pedido - Admin Estatus</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css" />
+</head>
+<body class="bg-light">
+
+  <div class="container-fluid">
+    <div class="row flex-nowrap min-vh-100">
+
+      <!-- SIDEBAR -->
+      <aside class="fixed-sidebar text-white d-flex flex-column p-3 shadow-sm" style="background-color: var(--kMorado);">
+        <a href="/index.html" class="d-flex align-items-center mb-4 text-white text-decoration-none">
+          <i class="bi bi-house-door-fill me-2 fs-4"></i>
+          <span class="fs-5 fw-semibold">Estatus Admin</span>
+        </a>
+        <ul class="nav nav-pills flex-column mb-auto">
+          <li><a href="/index.html" class="nav-link text-white"><i class="bi bi-house me-2"></i> Inicio</a></li>
+          <li><a href="/public/pages/Productos/Index.html" class="nav-link text-white"><i class="bi bi-box-seam me-2"></i> Productos</a></li>
+          <li><a href="/public/pages/Pedidos/Index.html" class="nav-link active bg-white text-dark"><i class="bi bi-receipt me-2"></i> Pedidos</a></li>
+          <li><a href="/public/pages/Clientes/Index.html" class="nav-link text-white"><i class="bi bi-people-fill me-2"></i> Clientes</a></li>
+          <li><a href="/public/pages/Estadisticas/Index.html" class="nav-link text-white"><i class="bi bi-bar-chart-line me-2"></i> Estadísticas</a></li>
+        </ul>
+      </aside>
+
+      <!-- CONTENIDO PRINCIPAL -->
+      <main class="main-content py-4 px-5">
+
+        <div class="card shadow-sm p-4">
+          <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="fw-bold" style="color: var(--kMorado);"><i class="bi bi-receipt me-2"></i>Pedido #<span id="pedidoId"></span></h2>
+            <form id="estadoForm" class="d-flex align-items-center gap-2">
+              <label class="me-2"><strong>Estado:</strong></label>
+              <select id="nuevoEstado" class="form-select form-select-sm w-auto">
+                <option value="pendiente">Pendiente</option>
+                <option value="confirmado">Confirmado</option>
+                <option value="pagado">Pagado</option>
+                <option value="entregado">Entregado</option>
+                <option value="rechazado">Rechazado</option>
+              </select>
+              <button type="submit" class="btn btn-sm" style="background-color: var(--kMorado); color: white;">
+                <i class="bi bi-arrow-repeat"></i>
+              </button>
+            </form>
+          </div>
+
+          <!-- Cabecera -->
+          <div class="mb-4">
+            <p class="mb-1"><i class="bi bi-person-circle me-2"></i><strong>Cliente:</strong> <span id="clienteRUC"></span></p>
+             <p class="mb-1"><i class="bi bi-calendar me-2"></i><strong>Fecha:</strong> <span id="pedidoFecha"></span></p>
+          </div>
+
+          <!-- Detalle -->
+          <h4 class="fw-bold mb-3" style="color: var(--kFucsia);"><i class="bi bi-list-ul me-2"></i>Detalle de Productos</h4>
+          <div class="table-responsive">
+            <table class="table table-bordered table-hover align-middle">
+              <thead class="table-light">
+                <tr>
+                  <th>ID</th>
+                  <th>Producto</th>
+                  <th>Precio Unitario</th>
+                  <th>Cantidad</th>
+                  <th>Total</th>
+                </tr>
+              </thead>
+              <tbody id="detalleProductos"></tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="4" class="text-end fw-bold">Subtotal</td>
+                  <td id="pedidoSubtotal" class="fw-semibold">$0.00</td>
+                </tr>
+                <tr>
+                  <td colspan="4" class="text-end fw-bold">IVA</td>
+                  <td id="pedidoIVA" class="fw-semibold">$0.00</td>
+                </tr>
+                <tr>
+                  <td colspan="4" class="text-end fw-bold">Total</td>
+                  <td id="pedidoTotal" class="fw-bold" style="color: var(--kMorado);">$0.00</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="../../js/detallePedidos.js"></script>
+  <script src="../../js/layout.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const pedidoId = new URLSearchParams(window.location.search).get('id');
+      cargarPedido(pedidoId);
+      cargarDetallePedido(pedidoId);
+    });
+
+    document.getElementById('estadoForm').addEventListener('submit', e => {
+      e.preventDefault();
+      const pedidoId = new URLSearchParams(window.location.search).get('id');
+      const nuevoEstado = document.getElementById('nuevoEstado').value;
+      actualizarPedido(pedidoId, nuevoEstado);
+    });
+  </script>
+</body>
+</html>

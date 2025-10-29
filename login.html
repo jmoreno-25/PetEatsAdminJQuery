@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - DeLirio Admin</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="public/css/style.css" />
+    <style>
+        body {
+            background: linear-gradient(135deg, var(--kMorado) 0%, var(--kFucsia) 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        
+        .container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .login-wrapper {
+            width: 100%;
+            max-width: 480px;
+        }
+        
+        .login-card {
+            width: 100%;
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95);
+            border: none;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            border-radius: 16px;
+        }
+        
+        .logo-container {
+            background: rgba(255, 255, 255, 0.2);
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+        
+        .form-control:focus {
+            border-color: var(--kMorado);
+            box-shadow: 0 0 0 0.2rem rgba(106, 76, 147, 0.25);
+        }
+        
+        .btn-login {
+            background: linear-gradient(135deg, var(--kMorado) 0%, var(--kFucsia) 100%);
+            border: none;
+            height: 48px;
+            border-radius: 12px;
+        }
+        
+        .btn-login:hover {
+            background: linear-gradient(135deg, var(--kFucsia) 0%, var(--kMorado) 100%);
+            transform: translateY(-1px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .loading-spinner {
+            width: 20px;
+            height: 20px;
+            border: 2px solid transparent;
+            border-top: 2px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .logout-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            color: white;
+            transform: translateY(-1px);
+        }
+
+        .theme-selector {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            padding: 8px;
+        }
+
+        .theme-btn {
+            background: none;
+            border: none;
+            color: white;
+            padding: 6px 10px;
+            border-radius: 6px;
+            margin: 0 2px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .theme-btn:hover, .theme-btn.active {
+            background: rgba(255, 255, 255, 0.3);
+            color: white;
+        }
+
+        /* Tema oscuro - COMPLETAMENTE NEGRO */
+        [data-theme="dark"] {
+            --kMorado: #9B8FD1;
+            --kFucsia: #E056A5;
+        }
+
+        [data-theme="dark"] body {
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%) !important;
+            color: #f0f0f0 !important;
+        }
+
+        [data-theme="dark"] .container {
+            background: transparent !important;
+        }
+
+        [data-theme="dark"] .login-card {
+            background: rgba(15, 15, 15, 0.95) !important;
+            color: #f0f0f0 !important;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8) !important;
+            border: 1px solid #333 !important;
+        }
+
+        [data-theme="dark"] .form-control {
+            background-color: #2b2b2b !important;
+            border-color: #555 !important;
+            color: #f0f0f0 !important;
+        }
+
+        [data-theme="dark"] .form-control:focus {
+            background-color: #2b2b2b !important;
+            border-color: var(--kMorado) !important;
+            color: #f0f0f0 !important;
+            box-shadow: 0 0 0 0.2rem rgba(155, 143, 209, 0.25) !important;
+        }
+
+        [data-theme="dark"] .form-control::placeholder {
+            color: #888 !important;
+        }
+
+        [data-theme="dark"] .input-group-text {
+            background-color: #2b2b2b !important;
+            border-color: #555 !important;
+            color: #f0f0f0 !important;
+        }
+
+        [data-theme="dark"] .btn-outline-secondary {
+            background-color: #2b2b2b !important;
+            border-color: #555 !important;
+            color: #f0f0f0 !important;
+        }
+
+        [data-theme="dark"] .btn-outline-secondary:hover {
+            background-color: #3c3c3c !important;
+            border-color: #666 !important;
+            color: #f0f0f0 !important;
+        }
+
+        [data-theme="dark"] .form-label {
+            color: #f0f0f0 !important;
+        }
+
+        [data-theme="dark"] .text-muted {
+            color: #888 !important;
+        }
+
+        [data-theme="dark"] .alert-danger {
+            background-color: #d32f2f !important;
+            border-color: #d32f2f !important;
+            color: white !important;
+        }
+
+        [data-theme="dark"] a {
+            color: var(--kMorado) !important;
+        }
+
+        [data-theme="dark"] .text-white-50 {
+            color: #888 !important;
+        }
+
+        [data-theme="dark"] h2, 
+        [data-theme="dark"] h4 {
+            color: #f0f0f0 !important;
+        }
+
+        [data-theme="dark"] .logo-container {
+            background: rgba(0, 0, 0, 0.3) !important;
+        }
+
+        /* Forzar tema oscuro con máxima especificidad */
+        html[data-theme="dark"] body,
+        body[data-theme="dark"] {
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%) !important;
+            color: #f0f0f0 !important;
+        }
+
+        html[data-theme="dark"] .login-card,
+        body[data-theme="dark"] .login-card {
+            background: rgba(15, 15, 15, 0.95) !important;
+            color: #f0f0f0 !important;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8) !important;
+            border: 1px solid #333 !important;
+        }
+
+        html[data-theme="dark"] .form-control,
+        body[data-theme="dark"] .form-control {
+            background-color: #2b2b2b !important;
+            border-color: #555 !important;
+            color: #f0f0f0 !important;
+        }
+
+        html[data-theme="dark"] .input-group-text,
+        body[data-theme="dark"] .input-group-text {
+            background-color: #2b2b2b !important;
+            border-color: #555 !important;
+            color: #f0f0f0 !important;
+        }
+
+        /* Clase de fuerza para tema oscuro */
+        .theme-dark-forced {
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%) !important;
+            color: #f0f0f0 !important;
+        }
+
+        .theme-dark-forced .login-card {
+            background: rgba(15, 15, 15, 0.95) !important;
+            color: #f0f0f0 !important;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8) !important;
+            border: 1px solid #333 !important;
+        }
+
+        .theme-dark-forced .form-control {
+            background-color: #2b2b2b !important;
+            border-color: #555 !important;
+            color: #f0f0f0 !important;
+        }
+
+        .theme-dark-forced .input-group-text {
+            background-color: #2b2b2b !important;
+            border-color: #555 !important;
+            color: #f0f0f0 !important;
+        }
+
+        .theme-dark-forced .form-label {
+            color: #f0f0f0 !important;
+        }
+
+        .theme-dark-forced h2,
+        .theme-dark-forced h4 {
+            color: #f0f0f0 !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Selector de tema -->
+    <div class="theme-selector">
+        <button class="theme-btn" onclick="setTheme('light')" title="Modo Claro">
+            <i class="bi bi-sun"></i>
+        </button>
+        <button class="theme-btn" onclick="setTheme('dark')" title="Modo Oscuro">
+            <i class="bi bi-moon"></i>
+        </button>
+        <button class="theme-btn" onclick="setTheme('system')" title="Sistema">
+            <i class="bi bi-display"></i>
+        </button>
+    </div>
+
+    <!-- Botón de cerrar sesión (solo visible si hay token) -->
+    <a href="#" class="logout-btn d-none" id="logoutBtn" onclick="logout()" title="Cerrar Sesión">
+        <i class="bi bi-box-arrow-right me-1"></i>
+        Cerrar Sesión
+    </a>
+
+    <div class="container">
+        <div class="login-wrapper">
+            <!-- Logo y título -->
+            <div class="text-center mb-4">
+                <div class="logo-container">
+                    <i class="bi bi-flower1" style="font-size: 4rem; color: white;"></i>
+                </div>
+                <h2 class="text-white fw-bold mb-0">Estatus</h2>
+                <p class="text-white-50">Panel de Administración</p>
+            </div>
+
+            <!-- Tarjeta de login -->
+            <div class="card login-card">
+                <div class="card-body p-5">
+                        <h4 class="text-center mb-4" style="color: var(--kMorado);">Iniciar Sesión</h4>
+                        
+                        <form id="loginForm">
+                            <div class="mb-3">
+                                <label for="username" class="form-label">Nombre de usuario</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">
+                                        <i class="bi bi-person"></i>
+                                    </span>
+                                    <input type="text" class="form-control" id="username" required 
+                                           placeholder="Ingresa tu usuario">
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Contraseña</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">
+                                        <i class="bi bi-lock"></i>
+                                    </span>
+                                    <input type="password" class="form-control" id="password" required 
+                                           placeholder="Ingresa tu contraseña" minlength="4">
+                                    <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                                        <i class="bi bi-eye" id="eyeIcon"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="text-end mb-3">
+                                <a href="#" class="text-decoration-none" style="color: var(--kMorado);" 
+                                   onclick="alert('Función no implementada')">
+                                    ¿Olvidaste tu contraseña?
+                                </a>
+                            </div>
+
+                            <div class="d-grid mb-3">
+                                <button type="submit" class="btn btn-login text-white fw-bold" id="btnLogin">
+                                    <span id="loginText">Ingresar</span>
+                                    <div id="loginSpinner" class="loading-spinner d-none"></div>
+                                </button>
+                            </div>
+
+                            <div class="text-center">
+                                <span class="text-muted">¿No tienes cuenta? </span>
+                                <a href="#" class="text-decoration-none" style="color: var(--kFucsia);" 
+                                   onclick="alert('Función no implementada')">
+                                    Crear cuenta
+                                </a>
+                            </div>
+                        </form>
+
+                        <div id="errorMessage" class="alert alert-danger mt-3 d-none" role="alert">
+                            <i class="bi bi-exclamation-triangle me-2"></i>
+                            <span id="errorText"></span>
+                        </div>
+                    </div>
+                </div>
+
+            <div class="text-center mt-4">
+                <small class="text-white-50">
+                    Al ingresar aceptas los términos y condiciones
+                </small>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Función para mostrar/ocultar contraseña
+        document.getElementById('togglePassword').addEventListener('click', function() {
+            const passwordInput = document.getElementById('password');
+            const eyeIcon = document.getElementById('eyeIcon');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                eyeIcon.className = 'bi bi-eye-slash';
+            } else {
+                passwordInput.type = 'password';
+                eyeIcon.className = 'bi bi-eye';
+            }
+        });
+
+        // Función de login
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value;
+            
+            if (!username || !password) {
+                showError('Por favor completa todos los campos');
+                return;
+            }
+
+            if (password.length < 4) {
+                showError('La contraseña debe tener al menos 4 caracteres');
+                return;
+            }
+
+            setLoading(true);
+            hideError();
+
+            try {
+                const response = await fetch('https://delirio.runasp.net/api/auth/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        username: username,
+                        password: password
+                    })
+                });
+
+                const data = await response.json();
+
+                if (response.ok && data.token) {
+                    // Guardar token en localStorage
+                    localStorage.setItem('authToken', data.token);
+                    localStorage.setItem('username', username);
+                    
+                    // Redirigir al dashboard
+                    window.location.href = 'index.html';
+                } else {
+                    showError(data.message || 'Credenciales inválidas');
+                }
+            } catch (error) {
+                console.error('Error en login:', error);
+                showError('Error de conexión. Intenta nuevamente.');
+            } finally {
+                setLoading(false);
+            }
+        });
+
+        function setLoading(loading) {
+            const btnLogin = document.getElementById('btnLogin');
+            const loginText = document.getElementById('loginText');
+            const loginSpinner = document.getElementById('loginSpinner');
+            
+            if (loading) {
+                btnLogin.disabled = true;
+                loginText.classList.add('d-none');
+                loginSpinner.classList.remove('d-none');
+            } else {
+                btnLogin.disabled = false;
+                loginText.classList.remove('d-none');
+                loginSpinner.classList.add('d-none');
+            }
+        }
+
+        function showError(message) {
+            const errorDiv = document.getElementById('errorMessage');
+            const errorText = document.getElementById('errorText');
+            
+            errorText.textContent = message;
+            errorDiv.classList.remove('d-none');
+        }
+
+        function hideError() {
+            const errorDiv = document.getElementById('errorMessage');
+            errorDiv.classList.add('d-none');
+        }
+
+        // Funciones de tema
+        function setTheme(theme) {
+            localStorage.setItem('theme', theme);
+            applyTheme();
+            updateThemeButtons();
+        }
+
+        function applyTheme() {
+            const theme = localStorage.getItem('theme') || 'system';
+            let actualTheme = theme;
+
+            if (theme === 'system') {
+                actualTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            }
+
+            // Remover tema anterior
+            document.documentElement.removeAttribute('data-theme');
+            document.body.removeAttribute('data-theme');
+            
+            // Aplicar nuevo tema
+            document.documentElement.setAttribute('data-theme', actualTheme);
+            document.body.setAttribute('data-theme', actualTheme);
+            
+            console.log('🎨 Tema aplicado:', actualTheme);
+            
+            // Si es tema oscuro, forzar estilos inline como respaldo
+            if (actualTheme === 'dark') {
+                document.body.style.background = 'linear-gradient(135deg, #000000 0%, #1a1a1a 100%)';
+                document.body.style.color = '#f0f0f0';
+                
+                // Aplicar a elementos específicos después de un pequeño delay
+                setTimeout(() => {
+                    const loginCard = document.querySelector('.login-card');
+                    if (loginCard) {
+                        loginCard.style.background = 'rgba(15, 15, 15, 0.95)';
+                        loginCard.style.color = '#f0f0f0';
+                        loginCard.style.border = '1px solid #333';
+                    }
+                    
+                    const formControls = document.querySelectorAll('.form-control');
+                    formControls.forEach(input => {
+                        input.style.backgroundColor = '#2b2b2b';
+                        input.style.borderColor = '#555';
+                        input.style.color = '#f0f0f0';
+                    });
+                    
+                    const inputGroupTexts = document.querySelectorAll('.input-group-text');
+                    inputGroupTexts.forEach(span => {
+                        span.style.backgroundColor = '#2b2b2b';
+                        span.style.borderColor = '#555';
+                        span.style.color = '#f0f0f0';
+                    });
+                }, 50);
+            } else {
+                // Remover estilos inline en tema claro
+                document.body.style.background = '';
+                document.body.style.color = '';
+            }
+        }
+
+        function updateThemeButtons() {
+            const currentTheme = localStorage.getItem('theme') || 'system';
+            document.querySelectorAll('.theme-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            if (currentTheme === 'light') {
+                document.querySelector('[onclick="setTheme(\'light\')"]').classList.add('active');
+            } else if (currentTheme === 'dark') {
+                document.querySelector('[onclick="setTheme(\'dark\')"]').classList.add('active');
+            } else {
+                document.querySelector('[onclick="setTheme(\'system\')"]').classList.add('active');
+            }
+        }
+
+        // Función de logout
+        function logout() {
+            localStorage.removeItem('authToken');
+            localStorage.removeItem('username');
+            document.getElementById('logoutBtn').classList.add('d-none');
+            alert('Sesión cerrada correctamente');
+        }
+
+        // Inicializar tema
+        document.addEventListener('DOMContentLoaded', function() {
+            applyTheme();
+            updateThemeButtons();
+
+            // Escuchar cambios en el tema del sistema
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function() {
+                if (localStorage.getItem('theme') === 'system') {
+                    applyTheme();
+                }
+            });
+
+            // Mostrar botón de logout si hay token
+            if (localStorage.getItem('authToken')) {
+                document.getElementById('logoutBtn').classList.remove('d-none');
+            }
+        });
+
+        // Verificar si ya está logueado
+        if (localStorage.getItem('authToken')) {
+            window.location.href = 'index.html';
+        }
+
+        // FORZAR TEMA OSCURO INMEDIATAMENTE SI ESTÁ SELECCIONADO
+        (function() {
+            const theme = localStorage.getItem('theme') || 'system';
+            let actualTheme = theme;
+            
+            if (theme === 'system') {
+                actualTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            }
+            
+            if (actualTheme === 'dark') {
+                console.log('🌙 FORZANDO tema oscuro inmediatamente');
+                document.documentElement.style.background = '#000';
+                document.body.style.background = 'linear-gradient(135deg, #000000 0%, #1a1a1a 100%)';
+                document.body.style.color = '#f0f0f0';
+                
+                // Agregar clase CSS inmediata
+                document.body.classList.add('theme-dark-forced');
+            }
+        })();
+    </script>
+</body>
+</html>

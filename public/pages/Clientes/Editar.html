@@ -40,8 +40,8 @@
 </button>
 
         <div class="card shadow-sm p-4">
-          <h2 class="text-success fw-bold mb-4">
-            <i class="bi bi-pencil-square me-2"></i>Editar Cliente #<span id="clienteId"></span>
+          <h2 class="fw-bold mb-4" style="color: var(--kMorado);">
+            <i class="bi bi-pencil-square me-2"></i>Editar Cliente
           </h2>
 
           <form id="editarClienteForm" class="row g-3">
@@ -61,6 +61,16 @@
             </div>
 
             <div class="col-md-6">
+              <label class="form-label">Email</label>
+              <input type="email" name="CLI_EMAIL" class="form-control" required />
+            </div>
+
+            <div class="col-12">
+              <label class="form-label">Dirección</label>
+              <input type="text" name="CLI_DIRECCION" class="form-control" required />
+            </div>
+
+            <div class="col-md-6">
               <label class="form-label">Estado</label>
               <select name="CLI_ESTADO" class="form-select" required>
                 <option value="ACT">Activo</option>
@@ -69,7 +79,7 @@
             </div>
 
             <div class="col-12 d-flex justify-content-end mt-3">
-              <button type="submit" class="btn btn-success px-4 rounded-pill">
+              <button type="submit" class="btn px-4 rounded-pill" style="background-color: var(--kMorado); color: white;">
                 <i class="bi bi-check2-circle me-1"></i> Actualizar
               </button>
             </div>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Inicio - Admin PetEats</title>
+  <title>Inicio - Admin Estatus</title>
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
@@ -14,15 +14,15 @@
     <div class="row flex-nowrap min-vh-100">
       
       <!-- SIDEBAR -->
-      <aside class="fixed-sidebar col-auto col-md-3 col-xl-2 bg-success text-white d-flex flex-column p-3 shadow-sm">
+      <aside class="fixed-sidebar col-auto col-md-3 col-xl-2 text-white d-flex flex-column p-3 shadow-sm" style="background-color: var(--kMorado);">
         <a href="/index.html" class="d-flex align-items-center mb-4 text-white text-decoration-none">
           <i class="bi bi-house-door-fill me-2 fs-4"></i>
-          <span class="fs-5 fw-semibold">PetEats Admin</span>
+          <span class="fs-5 fw-semibold">Estatus Admin</span>
         </a>
         <ul class="nav nav-pills flex-column mb-auto">
           <li class="nav-item">
             <a href="/index.html" class="nav-link text-white d-flex align-items-center">
-              <i class="bi bi-speedometer2 me-2"></i> Inicio
+              <i class="bi bi-house me-2"></i> Inicio
             </a>
           </li>
           <li>
@@ -31,8 +31,8 @@
             </a>
           </li>
           <li>
-            <a href="/public/pages/Facturas/Index.html" class="nav-link text-white d-flex align-items-center">
-              <i class="bi bi-receipt me-2"></i> Facturas
+            <a href="/public/pages/Pedidos/Index.html" class="nav-link text-white d-flex align-items-center">
+              <i class="bi bi-receipt me-2"></i> Pedidos
             </a>
           </li>
           <li>
@@ -46,27 +46,58 @@
             </a>
           </li>
         </ul>
-        <hr class="text-white">
-        <footer class="text-center text-white-50 small mt-auto">
-          &copy; <span id="year"></span> PetEats
-        </footer>
+        
+        <!-- Footer del Sidebar con Tema y Cerrar Sesión -->
+        <div class="mt-auto">
+          <hr class="text-white opacity-50">
+          
+          <!-- Selector de tema -->
+          <div class="mb-3">
+            <div class="text-white-50 small mb-2">
+              <i class="bi bi-palette me-1"></i> Tema
+            </div>
+            <div class="d-flex gap-2">
+              <button class="btn btn-sm btn-outline-light theme-btn" onclick="setTheme('light')" title="Modo Claro">
+                <i class="bi bi-sun"></i>
+              </button>
+              <button class="btn btn-sm btn-outline-light theme-btn" onclick="setTheme('dark')" title="Modo Oscuro">
+                <i class="bi bi-moon"></i>
+              </button>
+              <button class="btn btn-sm btn-outline-light theme-btn" onclick="setTheme('system')" title="Sistema">
+                <i class="bi bi-display"></i>
+              </button>
+            </div>
+          </div>
+          
+          <!-- Botón de cerrar sesión -->
+          <div class="mb-3">
+            <a href="#" class="nav-link text-white" onclick="AuthService.logout()">
+              <i class="bi bi-box-arrow-right me-2"></i> Cerrar Sesión
+            </a>
+          </div>
+          
+          <!-- Copyright -->
+          <footer class="text-center text-white-50 small">
+            &copy; 2025 Estatus
+          </footer>
+        </div>
       </aside>
 
       <!-- CONTENIDO -->
       <div class="main-content col py-3">
         <div class="d-flex justify-content-between align-items-center px-4 py-3 border-bottom bg-white shadow-sm">
-          <h5 class="mb-0 fw-bold text-success">Admin PetEats</h5>
+          <h5 class="mb-0 fw-bold" style="color: var(--kMorado);">Admin Estatus</h5>
         </div>
 
         <main class="flex-grow-1 px-4 py-5">
-          <h2 class="text-center fw-bold text-success mb-4">Bienvenido al Panel Administrador de PetEats</h2>
+          <h2 class="text-center fw-bold mb-4" style="color: var(--kMorado);">Bienvenido al Panel Administrador de Estatus</h2>
           <p class="text-center text-muted mb-5">Accede rápidamente a los módulos de gestión:</p>
 
           <div class="row g-4 justify-content-center">
             <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
               <a href="/public/pages/Productos/Index.html" class="text-decoration-none">
                 <div class="card shadow-sm border-0 text-center p-4 h-100">
-                  <i class="bi bi-box-seam display-4 text-success mb-3"></i>
+                  <i class="bi bi-box-seam display-4 mb-3" style="color: var(--kMorado);"></i>
                   <h5 class="fw-bold text-dark">Productos</h5>
                   <p class="text-muted">Gestión completa del catálogo</p>
                 </div>
@@ -74,10 +105,10 @@
             </div>
 
             <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
-              <a href="/public/pages/Facturas/Index.html" class="text-decoration-none">
+              <a href="/public/pages/Pedidos/Index.html" class="text-decoration-none">
                 <div class="card shadow-sm border-0 text-center p-4 h-100">
-                  <i class="bi bi-receipt display-4 text-warning mb-3"></i>
-                  <h5 class="fw-bold text-dark">Facturas</h5>
+                  <i class="bi bi-receipt display-4 mb-3" style="color: var(--kFucsia);"></i>
+                  <h5 class="fw-bold text-dark">Pedidos</h5>
                   <p class="text-muted">Consulta y control de pedidos</p>
                 </div>
               </a>
@@ -86,7 +117,7 @@
             <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
               <a href="/public/pages/Clientes/Index.html" class="text-decoration-none">
                 <div class="card shadow-sm border-0 text-center p-4 h-100">
-                  <i class="bi bi-people-fill display-4 text-info mb-3"></i>
+                  <i class="bi bi-people-fill display-4 mb-3" style="color: var(--kMoradoClaro);"></i>
                   <h5 class="fw-bold text-dark">Clientes</h5>
                   <p class="text-muted">Lista y administración de usuarios</p>
                 </div>
@@ -96,7 +127,7 @@
             <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
               <a href="/public/pages/Estadisticas/Index.html" class="text-decoration-none">
                 <div class="card shadow-sm border-0 text-center p-4 h-100">
-                  <i class="bi bi-bar-chart-line-fill display-4 text-secondary mb-3"></i>
+                  <i class="bi bi-bar-chart-line-fill display-4 mb-3" style="color: var(--kRosaClaro);"></i>
                   <h5 class="fw-bold text-dark">Estadísticas</h5>
                   <p class="text-muted">Análisis de ventas y rendimiento</p>
                 </div>
@@ -104,7 +135,7 @@
             </div>
           </div>
           <div class="pt-5">
-  <h3 class="text-success fw-bold text-center mb-4">Resumen de Ventas</h3>
+  <h3 class="fw-bold text-center mb-4" style="color: var(--kMorado);">Resumen de Ventas</h3>
   <div class="d-flex justify-content-center mb-3">
     <label for="selectAnio" class="form-label me-2 mt-1">Año:</label>
     <select id="selectAnio" class="form-select form-select-sm w-auto">
@@ -118,7 +149,7 @@
     <!-- Pie Chart -->
     <div class="col-md-6">
       <div class="card shadow-sm p-3 h-100">
-        <h5 class="text-center fw-bold text-success">Ventas por Producto</h5>
+        <h5 class="text-center fw-bold" style="color: var(--kMorado);">Ventas por Producto</h5>
         <div class="d-flex">
           <div style="width: 70%;">
             <canvas id="pieChart" width="300" height="300"></canvas>
@@ -131,7 +162,7 @@
     <!-- Bar Chart -->
     <div class="col-md-6">
       <div class="card shadow-sm p-3 h-100">
-        <h5 class="text-center fw-bold text-success">Ventas Mensuales</h5>
+        <h5 class="text-center fw-bold" style="color: var(--kMorado);">Ventas Mensuales</h5>
         <canvas id="barChart" width="400" height="300"></canvas>
       </div>
     </div>
@@ -142,6 +173,7 @@
     </div>
   </div>
   
+  <script src="/public/js/auth.js"></script>
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
     

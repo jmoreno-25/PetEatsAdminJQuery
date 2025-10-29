@@ -1,4 +1,4 @@
-const API_PRODUCTOS = "https://backendpeteats.runasp.net/api/productos-mas-vendidos";
+const API_PRODUCTOS = "https://delirio.runasp.net/api/productos-mas-vendidos";
 let ventasBarChart, productosPieChart;
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
       datasets: [{
         label: "Ventas",
         data: [],
-        backgroundColor: "rgba(22, 172, 52, 0.7)"
+        backgroundColor: "rgba(106, 76, 147, 0.7)"
       }]
     },
     options: {
@@ -72,17 +72,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
 async function cargarVentasPorMes(anio) {
   try {
-    const res = await fetch(`https://backendpeteats.runasp.net/api/ventas-por-mes/${anio}`);
-    const data = await res.json();
+    // Datos quemados para mostrar gráficos
+    const datosQuemados = [
+      { Mes: 1, Total_Ventas: 15420 },
+      { Mes: 2, Total_Ventas: 18750 },
+      { Mes: 3, Total_Ventas: 22150 },
+      { Mes: 4, Total_Ventas: 19800 },
+      { Mes: 5, Total_Ventas: 24600 },
+      { Mes: 6, Total_Ventas: 21350 },
+      { Mes: 7, Total_Ventas: 26780 },
+      { Mes: 8, Total_Ventas: 23940 },
+      { Mes: 9, Total_Ventas: 28150 },
+      { Mes: 10, Total_Ventas: 25670 },
+      { Mes: 11, Total_Ventas: 30200 },
+      { Mes: 12, Total_Ventas: 32850 }
+    ];
 
     const mesesNombre = [
       "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
       "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
     ];
 
-    data.sort((a, b) => a.Mes - b.Mes);
-    ventasBarChart.data.labels = data.map(item => `${mesesNombre[item.Mes - 1]}`);
-    ventasBarChart.data.datasets[0].data = data.map(item => Number(item.Total_Ventas));
+    datosQuemados.sort((a, b) => a.Mes - b.Mes);
+    ventasBarChart.data.labels = datosQuemados.map(item => `${mesesNombre[item.Mes - 1]}`);
+    ventasBarChart.data.datasets[0].data = datosQuemados.map(item => Number(item.Total_Ventas));
     ventasBarChart.update();
 
   } catch (error) {
@@ -92,23 +105,31 @@ async function cargarVentasPorMes(anio) {
 
 async function cargarProductosMasVendidos() {
   try {
-    const res = await fetch(API_PRODUCTOS);
-    const data = await res.json();
-
-    const colors = [
-      "#FF6384", "#36A2EB", "#FFCE56", "#4BC0C0", "#9966FF",
-      "#FF9F40", "#66FF66", "#FF6666", "#66B2FF", "#FF66B2"
+    // Datos quemados para mostrar gráficos
+    const datosQuemados = [
+      { PRD_NOMBRE: "Ramo de Rosas Rojas", Total_Vendido: 145 },
+      { PRD_NOMBRE: "Ramo de Tulipanes", Total_Vendido: 120 },
+      { PRD_NOMBRE: "Arreglo Floral Mixto", Total_Vendido: 98 },
+      { PRD_NOMBRE: "Ramo de Girasoles", Total_Vendido: 87 },
+      { PRD_NOMBRE: "Bouquet de Lirios", Total_Vendido: 76 },
+      { PRD_NOMBRE: "Ramo de Claveles", Total_Vendido: 65 },
+      { PRD_NOMBRE: "Arreglo de Orquídeas", Total_Vendido: 54 }
     ];
 
-    productosPieChart.data.labels = data.map(item => item.PRD_NOMBRE);
-    productosPieChart.data.datasets[0].data = data.map(item => Number(item.Total_Vendido));
-    productosPieChart.data.datasets[0].backgroundColor = colors.slice(0, data.length);
+    const colors = [
+      "#6A4C93", "#C44569", "#8B7EC8", "#E056A5", "#9C6DB8",
+      "#D87CAE", "#B688C4", "#F08CAE", "#A374B5", "#E67DB4"
+    ];
+
+    productosPieChart.data.labels = datosQuemados.map(item => item.PRD_NOMBRE);
+    productosPieChart.data.datasets[0].data = datosQuemados.map(item => Number(item.Total_Vendido));
+    productosPieChart.data.datasets[0].backgroundColor = colors.slice(0, datosQuemados.length);
     productosPieChart.update();
 
     const pieLegend = document.getElementById("pieLegend");
     pieLegend.innerHTML = "";
 
-    data.forEach((item, i) => {
+    datosQuemados.forEach((item, i) => {
       const li = document.createElement("li");
       li.innerHTML = `
         <span class="legend-color" style="background-color:${colors[i]}"></span>

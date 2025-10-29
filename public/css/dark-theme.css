@@ -1,0 +1,188 @@
+/* Tema Oscuro - Overrides adicionales */
+
+/* Fuerza el tema oscuro en todos los elementos principales */
+html[data-theme="dark"],
+html[data-theme="dark"] body {
+    background-color: #121212 !important;
+    color: #f0f0f0 !important;
+}
+
+html[data-theme="dark"] * {
+    border-color: #444 !important;
+}
+
+/* Sidebar oscuro forzado */
+html[data-theme="dark"] .fixed-sidebar {
+    background-color: #1a1a1a !important;
+    border-right: 1px solid #333 !important;
+}
+
+/* Main content oscuro forzado */
+html[data-theme="dark"] .main-content {
+    background-color: #121212 !important;
+    color: #f0f0f0 !important;
+}
+
+/* Cards oscuras forzadas */
+html[data-theme="dark"] .card {
+    background-color: #2b2b2b !important;
+    color: #f0f0f0 !important;
+    border: 1px solid #444 !important;
+}
+
+/* Todas las clases de Bootstrap con fondo claro */
+html[data-theme="dark"] .bg-light,
+html[data-theme="dark"] .bg-white {
+    background-color: #121212 !important;
+    color: #f0f0f0 !important;
+}
+
+/* Container y row oscuros */
+html[data-theme="dark"] .container-fluid,
+html[data-theme="dark"] .row {
+    background-color: #121212 !important;
+    color: #f0f0f0 !important;
+}
+
+/* Inputs y formularios oscuros forzados */
+html[data-theme="dark"] input,
+html[data-theme="dark"] select,
+html[data-theme="dark"] textarea,
+html[data-theme="dark"] .form-control,
+html[data-theme="dark"] .form-select {
+    background-color: #3c3c3c !important;
+    color: #f0f0f0 !important;
+    border-color: #555 !important;
+}
+
+html[data-theme="dark"] .form-control:focus,
+html[data-theme="dark"] .form-select:focus {
+    background-color: #3c3c3c !important;
+    color: #f0f0f0 !important;
+    border-color: #9B8FD1 !important;
+    box-shadow: 0 0 0 0.2rem rgba(155, 143, 209, 0.25) !important;
+}
+
+/* Placeholders oscuros */
+html[data-theme="dark"] ::placeholder {
+    color: #888 !important;
+}
+
+/* Input groups oscuros */
+html[data-theme="dark"] .input-group-text {
+    background-color: #3c3c3c !important;
+    color: #f0f0f0 !important;
+    border-color: #555 !important;
+}
+
+/* Botones outline en tema oscuro */
+html[data-theme="dark"] .btn-outline-light {
+    color: #f0f0f0 !important;
+    border-color: #555 !important;
+}
+
+html[data-theme="dark"] .btn-outline-light:hover {
+    background-color: #555 !important;
+    color: #f0f0f0 !important;
+}
+
+/* Modales oscuros forzados */
+html[data-theme="dark"] .modal-content {
+    background-color: #2b2b2b !important;
+    color: #f0f0f0 !important;
+    border: 1px solid #444 !important;
+}
+
+html[data-theme="dark"] .modal-header {
+    border-bottom: 1px solid #444 !important;
+    background-color: inherit !important;
+}
+
+html[data-theme="dark"] .modal-footer {
+    border-top: 1px solid #444 !important;
+    background-color: inherit !important;
+}
+
+/* Tablas oscuras forzadas */
+html[data-theme="dark"] .table {
+    --bs-table-bg: #2b2b2b !important;
+    --bs-table-color: #f0f0f0 !important;
+    color: #f0f0f0 !important;
+}
+
+html[data-theme="dark"] .table-light {
+    --bs-table-bg: #3c3c3c !important;
+    background-color: #3c3c3c !important;
+    color: #f0f0f0 !important;
+}
+
+/* Nav tabs oscuras */
+html[data-theme="dark"] .nav-tabs {
+    border-bottom: 1px solid #444 !important;
+}
+
+html[data-theme="dark"] .nav-tabs .nav-link {
+    color: #f0f0f0 !important;
+    background-color: transparent !important;
+    border-color: #444 !important;
+}
+
+html[data-theme="dark"] .nav-tabs .nav-link.active {
+    background-color: #2b2b2b !important;
+    color: #f0f0f0 !important;
+    border-color: #444 #444 #2b2b2b !important;
+}
+
+/* Tab content oscuro */
+html[data-theme="dark"] .tab-content {
+    background-color: #2b2b2b !important;
+    color: #f0f0f0 !important;
+}
+
+html[data-theme="dark"] .tab-pane {
+    background-color: inherit !important;
+    color: inherit !important;
+}
+
+/* Alertas oscuras */
+html[data-theme="dark"] .alert {
+    background-color: #3c3c3c !important;
+    color: #f0f0f0 !important;
+    border-color: #555 !important;
+}
+
+/* Override para asegurar que el texto se vea */
+html[data-theme="dark"] h1,
+html[data-theme="dark"] h2,
+html[data-theme="dark"] h3,
+html[data-theme="dark"] h4,
+html[data-theme="dark"] h5,
+html[data-theme="dark"] h6,
+html[data-theme="dark"] p,
+html[data-theme="dark"] span,
+html[data-theme="dark"] div {
+    color: #f0f0f0 !important;
+}
+
+/* Labels y strong */
+html[data-theme="dark"] label,
+html[data-theme="dark"] strong {
+    color: #f0f0f0 !important;
+}
+
+/* Links */
+html[data-theme="dark"] a {
+    color: #9B8FD1 !important;
+}
+
+html[data-theme="dark"] a:hover {
+    color: #B3A7DB !important;
+}
+
+/* Clase override para elementos dinámicos */
+.dark-theme-override {
+    background-color: #2b2b2b !important;
+    background: #2b2b2b !important;
+    color: #f0f0f0 !important;
+    border-color: #444 !important;
+}

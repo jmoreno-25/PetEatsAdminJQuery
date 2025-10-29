@@ -1,3 +1,235 @@
+/* Colores del tema */
+:root {
+    --kMorado: #6A4C93;
+    --kFucsia: #C44569;
+    --kMoradoClaro: #8B7EC8;
+    --kRosaClaro: #E056A5;
+    --kGrisClaro: #F5F5F5;
+    --kBlanco: #FFFFFF;
+    --kTextoOscuro: #2D2D2D;
+    --kFondo: #FFFFFF;
+    --kFondoSecundario: #F8F9FA;
+}
+
+/* Tema oscuro */
+[data-theme="dark"] {
+    --kMorado: #9B8FD1;
+    --kFucsia: #E85DAE;
+    --kMoradoClaro: #B3A7DB;
+    --kRosaClaro: #EC7BB8;
+    --kGrisClaro: #121212;
+    --kBlanco: #2b2b2b;
+    --kTextoOscuro: #f0f0f0;
+    --kFondo: #2b2b2b;
+    --kFondoSecundario: #3c3c3c;
+}
+
+[data-theme="dark"] body {
+    background-color: var(--kGrisClaro);
+    color: var(--kTextoOscuro);
+}
+
+[data-theme="dark"] .card {
+    background-color: var(--kFondo);
+    color: var(--kTextoOscuro);
+    border-color: #444;
+}
+
+[data-theme="dark"] .form-control {
+    background-color: var(--kFondoSecundario);
+    border-color: #444;
+    color: var(--kTextoOscuro);
+}
+
+[data-theme="dark"] .form-control:focus {
+    background-color: var(--kFondoSecundario);
+    border-color: var(--kMorado);
+    color: var(--kTextoOscuro);
+    box-shadow: 0 0 0 0.2rem rgba(139, 126, 200, 0.25);
+}
+
+[data-theme="dark"] .form-select {
+    background-color: var(--kFondoSecundario);
+    border-color: #444;
+    color: var(--kTextoOscuro);
+}
+
+[data-theme="dark"] .modal-content {
+    background-color: var(--kFondo);
+    color: var(--kTextoOscuro);
+    border-color: #444;
+}
+
+[data-theme="dark"] .table {
+    color: var(--kTextoOscuro);
+}
+
+[data-theme="dark"] .table-light {
+    background-color: var(--kFondoSecundario);
+    color: var(--kTextoOscuro);
+}
+
+[data-theme="dark"] .theme-btn.active {
+    background-color: var(--kMorado) !important;
+    border-color: var(--kMorado) !important;
+}
+
+/* Sidebar oscuro */
+[data-theme="dark"] .fixed-sidebar {
+    background-color: #2d2d2d !important;
+}
+
+/* Contenido principal oscuro */
+[data-theme="dark"] .main-content {
+    background-color: var(--kGrisClaro) !important;
+    color: var(--kTextoOscuro) !important;
+}
+
+/* Cards oscuras */
+[data-theme="dark"] .card {
+    background-color: var(--kFondo) !important;
+    color: var(--kTextoOscuro) !important;
+    border-color: #444 !important;
+}
+
+/* Inputs y formularios oscuros */
+[data-theme="dark"] .form-control,
+[data-theme="dark"] .form-select,
+[data-theme="dark"] .form-control:focus,
+[data-theme="dark"] .form-select:focus {
+    background-color: var(--kFondoSecundario) !important;
+    border-color: #555 !important;
+    color: var(--kTextoOscuro) !important;
+}
+
+[data-theme="dark"] .form-control::placeholder {
+    color: #888 !important;
+}
+
+/* Input groups oscuros */
+[data-theme="dark"] .input-group-text {
+    background-color: var(--kFondoSecundario) !important;
+    border-color: #555 !important;
+    color: var(--kTextoOscuro) !important;
+}
+
+/* Modales oscuros */
+[data-theme="dark"] .modal-content {
+    background-color: var(--kFondo) !important;
+    color: var(--kTextoOscuro) !important;
+    border-color: #444 !important;
+}
+
+[data-theme="dark"] .modal-header {
+    border-bottom-color: #444 !important;
+}
+
+[data-theme="dark"] .modal-footer {
+    border-top-color: #444 !important;
+}
+
+/* Tablas oscuras */
+[data-theme="dark"] .table {
+    color: var(--kTextoOscuro) !important;
+    --bs-table-bg: var(--kFondo) !important;
+}
+
+[data-theme="dark"] .table-light {
+    background-color: var(--kFondoSecundario) !important;
+    color: var(--kTextoOscuro) !important;
+}
+
+[data-theme="dark"] .table-bordered {
+    border-color: #444 !important;
+}
+
+[data-theme="dark"] .table-bordered td,
+[data-theme="dark"] .table-bordered th {
+    border-color: #444 !important;
+}
+
+/* Alertas oscuras */
+[data-theme="dark"] .alert {
+    background-color: var(--kFondoSecundario) !important;
+    border-color: #555 !important;
+    color: var(--kTextoOscuro) !important;
+}
+
+/* Badges y botones en tema oscuro */
+[data-theme="dark"] .badge {
+    background-color: var(--kMorado) !important;
+}
+
+/* Nav tabs oscuras */
+[data-theme="dark"] .nav-tabs {
+    border-bottom-color: #444 !important;
+}
+
+[data-theme="dark"] .nav-tabs .nav-link {
+    color: var(--kTextoOscuro) !important;
+    border-color: #444 !important;
+}
+
+[data-theme="dark"] .nav-tabs .nav-link.active {
+    background-color: var(--kFondo) !important;
+    color: var(--kTextoOscuro) !important;
+    border-color: #444 #444 var(--kFondo) !important;
+}
+
+/* Dropdown oscuro */
+[data-theme="dark"] .dropdown-menu {
+    background-color: var(--kFondo) !important;
+    border-color: #444 !important;
+}
+
+[data-theme="dark"] .dropdown-item {
+    color: var(--kTextoOscuro) !important;
+}
+
+[data-theme="dark"] .dropdown-item:hover {
+    background-color: var(--kFondoSecundario) !important;
+    color: var(--kTextoOscuro) !important;
+}
+
+/* Fondo general para páginas con bg-light */
+[data-theme="dark"] .bg-light {
+    background-color: var(--kGrisClaro) !important;
+}
+
+/* Contenedor principal */
+[data-theme="dark"] .container-fluid {
+    background-color: var(--kGrisClaro) !important;
+    color: var(--kTextoOscuro) !important;
+}
+
+[data-theme="dark"] .row {
+    background-color: var(--kGrisClaro) !important;
+}
+
+/* Text colors oscuros */
+[data-theme="dark"] .text-muted {
+    color: #888 !important;
+}
+
+[data-theme="dark"] .text-dark {
+    color: var(--kTextoOscuro) !important;
+}
+
+/* Min height viewport */
+[data-theme="dark"] .min-vh-100 {
+    background-color: var(--kGrisClaro) !important;
+}
+
+/* Shadow elements */
+[data-theme="dark"] .shadow-sm {
+    box-shadow: 0 .125rem .25rem rgba(255, 255, 255, .075) !important;
+}
+
+/* Border colors */
+[data-theme="dark"] .border-0 {
+    border-color: #444 !important;
+}
+
 * {
     box-sizing: border-box;
 }
@@ -9,13 +241,15 @@ html, body {
 
 body {
     font-family: 'Segoe UI', sans-serif;
-    background-color: #F7F7F7;
+    background-color: var(--kGrisClaro);
+    color: var(--kTextoOscuro);
     margin: 0;
     padding: 0;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .admin-header {
-    background-color: #A3B18A;
+    background-color: var(--kMorado);
     color: white;
     padding: 20px;
     display: flex;
@@ -35,6 +269,7 @@ body {
     .admin-header h1 {
         margin: 0;
         font-size: 24px;
+        color: var(--kBlanco);
     }
 
     .admin-header nav a {
@@ -42,6 +277,11 @@ body {
         margin-left: 20px;
         text-decoration: none;
         font-weight: bold;
+        transition: color 0.3s ease;
+    }
+    
+    .admin-header nav a:hover {
+        color: var(--kRosaClaro);
     }
 
 .alerta-exito {
@@ -88,18 +328,24 @@ body {
     }
 
     .tabla-datos th {
-        background-color: #A3B18A;
+        background-color: var(--kMorado);
         color: white;
     }
 
 .btn-crear {
-    background-color: #A3B18A;
+    background-color: var(--kMorado);
     color: white;
     padding: 10px 15px;
     border-radius: 20px;
     text-decoration: none;
     border: none;
     cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-crear:hover {
+    background-color: var(--kMoradoClaro);
+    color: white;
 }
 
 
@@ -122,7 +368,7 @@ body {
 .nombre-producto {
     font-size: 20px;
     font-weight: bold;
-    color: #A3B18A;
+    color: var(--kMorado);
     margin-top: 10px;
 }
 
@@ -136,7 +382,7 @@ body {
 }
 
 .titulo-dashboard {
-    color: #556B2F;
+    color: var(--kMorado);
     text-align: center;
     margin-bottom: 40px;
 }
@@ -168,7 +414,7 @@ body {
 }
 
 .card-indicador h3 {
-    color: #8B7E6A;
+    color: var(--kMorado);
     margin-bottom: 10px;
 }
 @media (max-width: 600px) {
@@ -249,15 +495,16 @@ body {
         .content input:focus,
         .content select:focus,
         .content textarea:focus {
-            border-color: #007bff;
+            border-color: var(--kMorado);
             outline: none;
+            box-shadow: 0 0 0 2px rgba(106, 76, 147, 0.2);
         }
 
     /* Botón */
     .content button {
         width: 100%;
         padding: 12px;
-        background-color: #007bff;
+        background-color: var(--kMorado);
         border: none;
         color: white;
         font-size: 16px;
@@ -267,7 +514,7 @@ body {
     }
 
         .content button:hover {
-            background-color: #0056b3;
+            background-color: var(--kMoradoClaro);
         }
 .acciones-botones {
     display: flex;
@@ -353,7 +600,7 @@ body {
     top: 0;
     width: 250px;
     height: 100vh;
-    background: #198754;
+    background: var(--kMorado);
     transition: left 0.3s;
     z-index: 2000;
     box-shadow: 2px 0 8px rgba(0,0,0,0.08);
@@ -371,7 +618,7 @@ body {
     top: 15px;
     left: 15px;
     z-index: 2100;
-    background: #198754;
+    background: var(--kMorado);
     color: #fff;
     border: none;
     border-radius: 50%;
